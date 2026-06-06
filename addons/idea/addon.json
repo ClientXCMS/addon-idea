@@ -1,0 +1,13 @@
+{
+    "name": "Idea",
+    "description": "Ideas board with votes, comments and Fider import.",
+    "uuid": "idea",
+    "version": "1.0",
+    "author": {
+        "name": "MartinDev",
+        "email": "contact@clientxcms.com"
+    },
+    "providers": [
+        "App\\Addons\\Idea\\IdeaServiceProvider"
+    ]
+}
