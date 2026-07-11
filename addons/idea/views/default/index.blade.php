@@ -46,18 +46,21 @@
                         <div class="mt-4 space-y-4">
                             @include('shared/input', ['name' => 'title', 'label' => __('global.title'), 'value' => old('title')])
                             @include('shared/textarea', ['name' => 'description', 'label' => __('global.content'), 'value' => old('description'), 'rows' => 5])
-                            @if($tags->count() > 0)
-                                <div>
-                                    <label class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400 mt-2">{{ __('idea::lang.tags') }}</label>
-                                    <div class="mt-2 flex flex-wrap gap-2">
-                                        @foreach($tags as $tag)
-                                            <label class="inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" @checked(in_array($tag->id, old('tags', [])))>
-                                                <span class="inline-flex rounded-full px-2 py-1 text-xs font-medium text-white" style="background-color: #{{ $tag->color }}">{{ $tag->name }}</span>
-                                            </label>
-                                        @endforeach
-                                    </div>
-                                </div>
+	                            @if($tags->count() > 0)
+	                                <div>
+	                                    <label class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400 mt-2">{{ __('idea::lang.tags') }}</label>
+	                                    <div class="mt-2 flex flex-wrap gap-2">
+	                                        @foreach($tags as $tag)
+	                                            <label class="inline-flex cursor-pointer items-center">
+	                                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="peer sr-only" @checked(in_array($tag->id, old('tags', [])))>
+	                                                <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm transition hover:border-gray-300 hover:bg-gray-50 peer-checked:border-transparent peer-checked:bg-[var(--tag-color)] peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800" style="--tag-color: #{{ $tag->color }};">
+	                                                    <span class="h-2 w-2 rounded-full bg-[var(--tag-color)]"></span>
+	                                                    <span>{{ $tag->name }}</span>
+	                                                </span>
+	                                            </label>
+	                                        @endforeach
+	                                    </div>
+	                                </div>
                             @endif
                             <button class="btn btn-primary w-full">{{ __('idea::lang.actions.submit') }}</button>
                         </div>
@@ -81,7 +84,6 @@
                             @endif
 
                             <form method="POST" action="{{ route('login') }}">
-
                                 @php($label = null) @php($value = null)
 
                                 @include('shared.auth.login', ['redirect' => route('ideas.index'), 'captcha' => true])
