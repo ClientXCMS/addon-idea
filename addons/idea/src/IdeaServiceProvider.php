@@ -41,6 +41,5 @@ class IdeaServiceProvider extends BaseAddonServiceProvider
         $settings->addCardItem('ideas', 'posts', 'idea::lang.admin.posts.title', 'idea::lang.admin.posts.description', 'bi bi-lightbulb', [IdeaPostController::class, 'index'], Permission::MANAGE_EXTENSIONS);
         $settings->addCardItem('ideas', 'comments', 'idea::lang.admin.comments.title', 'idea::lang.admin.comments.description', 'bi bi-chat-left-text', [IdeaCommentController::class, 'index'], Permission::MANAGE_EXTENSIONS);
         $settings->addCardItem('ideas', 'tags', 'idea::lang.admin.tags.title', 'idea::lang.admin.tags.description', 'bi bi-tags', [IdeaTagController::class, 'index'], Permission::MANAGE_EXTENSIONS);
-        $settings->addCardItem('ideas', 'import', 'idea::lang.admin.import.title', 'idea::lang.admin.import.description', 'bi bi-upload', [IdeaImportController::class, 'index'], Permission::MANAGE_EXTENSIONS);
     }
 }
