@@ -81,6 +81,9 @@
                             @endif
 
                             <form method="POST" action="{{ route('login') }}">
+
+                                @php($label = null) @php($value = null)
+
                                 @include('shared.auth.login', ['redirect' => route('ideas.index'), 'captcha' => true])
                             </form>
                         </div>
